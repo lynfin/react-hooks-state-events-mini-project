@@ -1,6 +1,12 @@
 import React from "react";
 
 function NewTaskForm() {
+  const taskInitialState = {
+    text: "",
+    category: "",
+    id: ""
+  }
+  
   return (
     <form className="new-task-form">
       <label>

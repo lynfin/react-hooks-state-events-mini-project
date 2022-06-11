@@ -9,11 +9,6 @@ import { CATEGORIES, TASKS } from "../data";
 function App() {
   const [tasks, setTasks] = useState(TASKS.map(task => ({ ...task, id: uuid() })));
   const [selectedCategory, setSelectedCategory] = useState('');
-  const filteredTasks = tasks.filter(task =>
-    selectedCategory === '' ||
-    selectedCategory === 'All' ||
-    task.category === selectedCategory);
-
 
   const deleteTask = (id) => {
     setTasks(tasks.filter(task => task.id !== id))
@@ -28,7 +23,12 @@ function App() {
       <h2>My tasks</h2>
       <CategoryFilter categories={CATEGORIES} onSelectCategory={selectCategory} />
       <NewTaskForm />
-      <TaskList tasks={filteredTasks} deleteTask={deleteTask} />
+      <TaskList
+        tasks={tasks.filter(task =>
+          selectedCategory === '' ||
+          selectedCategory === 'All' ||
+          task.category === selectedCategory)}
+        deleteTask={deleteTask} />
     </div>
   );
 }
