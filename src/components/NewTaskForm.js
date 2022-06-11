@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function NewTaskForm({ categories }) {
+function NewTaskForm({ categories, onTaskFormSubmit }) {
   const taskInitialState = {
     text: "",
     category: "misc",
@@ -15,6 +15,9 @@ function NewTaskForm({ categories }) {
   }
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    onTaskFormSubmit(newTask);
+    
     setNewTask((newTask) => taskInitialState);
     setNewTask({ ...taskInitialState });
     setNewTask(taskInitialState);

@@ -14,6 +14,10 @@ function App() {
     setTasks(tasks.filter(task => task.id !== id))
   }
 
+  const addTask = (newTask) => {
+    console.log('Received request to add', newTask)
+  }
+
   const selectCategory = (newCategory) => {
     setSelectedCategory(newCategory);
   }
@@ -22,7 +26,7 @@ function App() {
     <div className="App">
       <h2>My tasks</h2>
       <CategoryFilter categories={CATEGORIES} onSelectCategory={selectCategory} />
-      <NewTaskForm categories={CATEGORIES}/>
+      <NewTaskForm categories={CATEGORIES} onTaskFormSubmit={addTask}/>
       <TaskList
         tasks={tasks.filter(task =>
           selectedCategory === '' ||
