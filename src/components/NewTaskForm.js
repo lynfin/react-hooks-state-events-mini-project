@@ -1,12 +1,13 @@
-import React from "react";
+import React, {useState} from "react";
 
-function NewTaskForm() {
+function NewTaskForm({ categories }) {
   const taskInitialState = {
     text: "",
     category: "",
     id: ""
   }
-  
+  const [newTask, setNewTask] = useState(taskInitialState);
+
   return (
     <form className="new-task-form">
       <label>
@@ -16,7 +17,17 @@ function NewTaskForm() {
       <label>
         Category
         <select name="category">
-          {/* render <option> elements for each category here */}
+          {categories.filter(category => category !== 'All').map(
+            category => {
+              return (
+                <option
+                  value={category.toLowerCase()}
+                  key={category.toLowerCase()}>
+                  {category}
+                </option>)
+            }
+          )
+          }
         </select>
       </label>
       <input type="submit" value="Add task" />
