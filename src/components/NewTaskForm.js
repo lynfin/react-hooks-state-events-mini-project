@@ -3,11 +3,10 @@ import React, { useState } from "react";
 function NewTaskForm({ categories, onTaskFormSubmit }) {
   const taskInitialState = {
     text: "",
-    category: "misc",
-    id: ""
+    category: "misc"
   }
   const [newTask, setNewTask] = useState(taskInitialState);
-  const { text, category, id } = newTask;
+  const { text, category } = newTask;
 
   const handleChange = (event) => {    
     const {name, value} = event.target;
@@ -17,7 +16,7 @@ function NewTaskForm({ categories, onTaskFormSubmit }) {
     event.preventDefault();
 
     onTaskFormSubmit(newTask);
-    
+
     setNewTask((newTask) => taskInitialState);
     setNewTask({ ...taskInitialState });
     setNewTask(taskInitialState);

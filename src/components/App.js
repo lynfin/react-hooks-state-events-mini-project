@@ -16,6 +16,7 @@ function App() {
 
   const addTask = (newTask) => {
     console.log('Received request to add', newTask)
+    // LKF Create the new id and add task to the array
   }
 
   const selectCategory = (newCategory) => {
