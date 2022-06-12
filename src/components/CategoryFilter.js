@@ -1,31 +1,23 @@
 import React from "react";
 
-
-
-function CategoryFilter({ categories, onSelectCategory }) {
-
-  function handleClick(e) {
-    const allButtons = e.target.parentNode.querySelectorAll('button')
-    allButtons.forEach(
-      button =>
-        button.innerText === e.target.innerText ?
-          button.className = 'selected' :
-          button.className = ''
+function CategoryFilter({ categories, selectedCategory, onSelectCategory }) {
+  const categoryButtons = categories.map((category) => {
+    const className = category === selectedCategory ? "selected" : null;
+    return (
+      <button
+        key={category}
+        className={className}
+        onClick={() => onSelectCategory(category)}
+      >
+        {category}
+      </button>
     );
-    allButtons.forEach(button => console.log(button.innerText,':',button.className))
-    onSelectCategory(e.target.innerText);
-  }
+  });
+
   return (
-    <div className="categories" key="categories">
+    <div className="categories">
       <h5>Category filters</h5>
-      {
-        categories.map((category) =>
-          <button
-            onClick={handleClick}
-            className=""
-            key={category}
-          >{category}</button>)
-      }
+      {categoryButtons}
     </div>
   );
 }
