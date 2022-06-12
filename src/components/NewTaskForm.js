@@ -3,7 +3,7 @@ import React, { useState } from "react";
 function NewTaskForm({ categories, onTaskFormSubmit }) {
   const taskInitialState = {
     text: "",
-    category: "misc"
+    category: "Misc"
   }
   const [newTask, setNewTask] = useState(taskInitialState);
   const { text, category } = newTask;
@@ -39,8 +39,8 @@ function NewTaskForm({ categories, onTaskFormSubmit }) {
               category => {
                 return (
                   <option
-                    value={category.toLowerCase()}
-                    key={category.toLowerCase()}>
+                    value={category}
+                    key={category}>
                     {category}
                   </option>)
               }
