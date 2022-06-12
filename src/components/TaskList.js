@@ -5,7 +5,7 @@ import Task from "./Task.js"
 function TaskList({ tasks, deleteTask }) {
 
   return (
-    <div className="tasks">
+    <div className="tasks" key="tasks">
       {tasks.map(task => <Task
         category={task.category}
         text={task.text}

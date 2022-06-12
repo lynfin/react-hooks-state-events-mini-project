@@ -12,10 +12,11 @@ function CategoryFilter({ categories, onSelectCategory }) {
           button.className = 'selected' :
           button.className = ''
     );
+    allButtons.forEach(button => console.log(button.innerText,':',button.className))
     onSelectCategory(e.target.innerText);
   }
   return (
-    <div className="categories">
+    <div className="categories" key="categories">
       <h5>Category filters</h5>
       {
         categories.map((category) =>
